@@ -9,12 +9,17 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/
 const { Header } = Layout;
 
 
-function MyHeader (){
+function MyHeader ({navState}){
+    function ClickHandler(key){
+        console.log(`${key} was clicked`);
+        navState(key)
+    }
     return (
         <Header className="header">
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item key="1">Home</Menu.Item>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" onClick={() => ClickHandler("Home")}>Home</Menu.Item>
+            <Menu.Item key="2" onClick={() => ClickHandler("Course")}>Courses</Menu.Item>
           </Menu>
         </Header>
     );

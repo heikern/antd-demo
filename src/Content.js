@@ -10,6 +10,17 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
+function MainContent(props){
+    const pageState = props.pageState;
+    if (pageState == "Home"){
+        return <HomeContent />
+    } else if (pageState == "Course"){
+        return <CourseContent />
+    } else {
+        return <Lost />
+    }
+}
+
 
 function HomeContent(){
     return (
@@ -21,9 +32,43 @@ function HomeContent(){
             minHeight: 800,
             }}
         >
-            Content
+        <h2>This is the home page</h2>
         </Content>
     );
 }
 
-export default HomeContent;
+function CourseContent(){
+    return (
+        <Content
+            className="site-layout-background"
+            style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 800,
+            }}
+        >
+        <h2>This is the course page</h2>
+        </Content>
+    );
+}
+
+function Lost(){
+    return (
+        <Content
+            className="site-layout-background"
+            style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 800,
+            }}
+        >
+        <h2>Are you lost?</h2>
+        </Content>
+    );
+}
+
+export {
+    MainContent,
+    HomeContent, 
+    CourseContent
+}
